@@ -16,7 +16,8 @@ import {
   Tag,
   Menu,
   Modal,
-  Table
+  Table,
+  Divider
 } from 'ant-design-vue'; 
 
 Vue.component(Button.name, Button);
@@ -46,6 +47,7 @@ Vue.component(Menu.Item.name, Menu.Item);
 Vue.component(Menu.SubMenu.name, Menu.SubMenu);
 Vue.component(Modal.name, Modal);
 Vue.component(Table.name, Table);
+Vue.component(Divider.name, Divider);
 
 Vue.config.productionTip = false
 

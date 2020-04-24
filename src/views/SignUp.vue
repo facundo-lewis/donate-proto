@@ -15,6 +15,7 @@
                 </a-row>
             </div>
         </a-layout-content>
+        <a-layout-footer>Softvision</a-layout-footer>
     </a-layout>
 </template>
 <script>
