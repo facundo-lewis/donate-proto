@@ -4,9 +4,9 @@ import VueRouter from 'vue-router'
 import DonatorView from "../layouts/DonatorView.vue";
 import OrganizationView from "../layouts/OrganizationView.vue";
 
-import Donations from '../views/Donations.vue'
-import DonationCreate from '../views/DonationCreate.vue'
-import DonationEdit from '../views/DonationEdit.vue'
+import DonationRequests from '../views/DonationRequests.vue'
+import DonationRequestCreate from '../views/DonationRequestCreate.vue'
+import DonationRequestEdit from '../views/DonationRequestEdit.vue'
 import Organizations from '../views/Organizations.vue'
 import OrganizationCreate from '../views/OrganizationCreate.vue';
 import OrganizationEdit from '../views/OrganizationEdit.vue';
@@ -61,17 +61,17 @@ Vue.use(VueRouter)
         {
           path: 'donation/:id',
           name: 'DonationEdit',
-          component: DonationEdit
+          component: DonationRequestEdit
         },
         {
           path: 'donation',
-          name: 'DonationCreate',
-          component: DonationCreate
+          name: 'DonationRequestCreate',
+          component: DonationRequestCreate
         },
         {
           path: '',
           alias: '',
-          component: Donations
+          component: DonationRequests
         }
       ]
     },

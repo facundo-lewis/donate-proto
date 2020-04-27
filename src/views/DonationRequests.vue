@@ -94,7 +94,7 @@ const data = [
 ];
 
 export default {
-    name: 'Donations',
+    name: 'DonationRequests',
     data() {
         return {
             data,

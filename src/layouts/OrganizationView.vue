@@ -2,7 +2,7 @@
     <a-layout id="main-layout">
         <a-layout-header class="header">
             <div class="logo">
-                Donate
+                <router-link to="/">Donate</router-link>
             </div>
             <a-menu
                 theme="dark"

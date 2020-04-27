@@ -1,9 +1,8 @@
 <template>
-    <div>Edit</div>
+    <div>Create</div>
 </template>
-
 <script>
 export default {
-    name: 'DonationEdit'
+    name: 'DonationRequestCreate'
 }
 </script>

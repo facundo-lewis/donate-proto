@@ -4,7 +4,7 @@
             :style="{ position: 'fixed', zIndex: 1, width: '100%' }"
         >
            <div class="logo">
-               Donate
+               <router-link to="/">Donate</router-link>
            </div>
             <a-menu
                 theme="dark"
