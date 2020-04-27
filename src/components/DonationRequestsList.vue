@@ -3,6 +3,7 @@
         :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 4 }" 
         :dataSource="dataSource"
         :pagination="pagination"
+        id="donation-requests"
     >
         <a-list-item slot="renderItem" slot-scope="item">
             <!-- TODO: Replace to send the item to the child component -->
@@ -36,12 +37,6 @@ export default {
             type: Boolean,
             default: true
         },
-        pagination: {
-            onChange: page => {
-                console.log(page);
-            },
-            pageSize: 3,
-        },
         showModal: Function
     },
     data() {
@@ -50,7 +45,13 @@ export default {
             headStyle: {
                 textAlign: "left"
             },
-            dataSource: [{}, {}, {}, {}, {}, {}]
+            dataSource: [{}, {}, {}, {}, {}, {}],            
+            pagination: {
+                onChange: page => {
+                    console.log(page);
+                },
+                pageSize: 3 
+            }
         };
     },
     methods: {
@@ -62,14 +63,19 @@ export default {
     watch: {
         donationRequests: function(newValue) {           
             this.dataSource = newValue;
-        },
+        }
     }
 }
 </script>
 
 <style lang="less">
-    .action-buttons {
-        text-align: right;
-        padding-right: 15px;
+    #donation-requests {        
+        .action-buttons {
+            text-align: right;
+            padding-right: 15px;
+        }
+        .ant-list-pagination {
+            text-align: center;
+        }
     }
 </style>

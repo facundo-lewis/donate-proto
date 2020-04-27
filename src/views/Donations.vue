@@ -1,9 +1,11 @@
 <template>
   <div>
+
     <div class="table-operations">
-        <div style="text-align: right">
+        <h2 class="section-title">Donations</h2>
+        <div class="create-button">
             <router-link to="/admin/donation" tag='a-button' class="ant-btn-primary">
-                Create Donation
+                Create
             </router-link>
         </div>
       <a-divider></a-divider>
@@ -12,8 +14,51 @@
       <a-button @click="clearAll">Clear filters and sorters</a-button>
     </div>
     <a-table :columns="columns" :dataSource="data" @change="handleChange">
+        <div
+            slot="filterDropdown"
+            slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"
+            style="padding: 8px"
+        >
+            <a-input
+                v-ant-ref="c => (searchInput = c)"
+                :placeholder="`Search ${column.dataIndex}`"
+                :value="selectedKeys[0]"
+                @change="e => setSelectedKeys(e.target.value ? [e.target.value] : [])"
+                @pressEnter="() => handleSearch(selectedKeys, confirm, column.dataIndex)"
+                style="width: 188px; margin-bottom: 8px; display: block;"
+            />
+            <a-button
+                type="primary"
+                @click="() => handleSearch(selectedKeys, confirm, column.dataIndex)"
+                icon="search"
+                size="small"
+                style="width: 90px; margin-right: 8px"
+                >Search</a-button
+            >
+            <a-button @click="() => handleReset(clearFilters)" size="small" style="width: 90px"
+                >Reset</a-button
+            >
+        </div>
+        <template slot="customRender" slot-scope="text, record, index, column">
+            <span v-if="searchText && searchedColumn === column.dataIndex">
+                <template
+                v-for="(fragment, i) in text
+                    .toString()
+                    .split(new RegExp(`(?<=${searchText})|(?=${searchText})`, 'i'))"
+                >
+                <mark
+                    v-if="fragment.toLowerCase() === searchText.toLowerCase()"
+                    :key="i"
+                    class="highlight"
+                    >{{ fragment }}</mark
+                >
+                <template v-else>{{ fragment }}</template>
+                </template>
+            </span>
+            <template v-else>{{ text }}</template>
+        </template>
         <span slot="action" slot-scope="text, record">
-            <router-link :to="'/admin/donation/' + record.id">View</router-link>
+            <router-link :to="'/admin/donation/' + record.key">View</router-link>
             <a-divider type="vertical" />
             <a>Delete</a>
         </span>
@@ -55,6 +100,9 @@ export default {
             data,
             filteredInfo: null,
             sortedInfo: null,
+            searchText: '',
+            searchInput: null,
+            searchedColumn: '',
         };
     },
     computed: {
@@ -67,12 +115,22 @@ export default {
                     title: 'Name',
                     dataIndex: 'name',
                     key: 'name',
-                    filters: [
-                        { text: 'Joe', value: 'Joe' },
-                        { text: 'Jim', value: 'Jim' },
-                    ],
-                    filteredValue: filteredInfo.name || null,
-                    onFilter: (value, record) => record.name.includes(value),
+                    scopedSlots: {
+                        filterDropdown: 'filterDropdown',
+                        filterIcon: 'filterIcon',
+                        customRender: 'customRender',
+                    },
+                    onFilter: (value, record) => 
+                        record.name
+                            .toLowerCase()
+                            .includes(value.toLowerCase()),
+                    onFilterDropdownVisibleChange: visible => {
+                        if (visible) {
+                        setTimeout(() => {
+                            this.searchInput.focus();
+                        });
+                        }
+                    },
                     sorter: (a, b) => a.name.length - b.name.length,
                     sortOrder: sortedInfo.columnKey === 'name' && sortedInfo.order,
                     ellipsis: true,
@@ -126,6 +184,15 @@ export default {
                 columnKey: 'age',
             };
         },
+        handleSearch(selectedKeys, confirm, dataIndex) {
+            confirm();
+            this.searchText = selectedKeys[0];
+            this.searchedColumn = dataIndex;
+        },
+        handleReset(clearFilters) {
+            clearFilters();
+            this.searchText = '';
+        },
     },
 };
 </script>
@@ -136,5 +203,8 @@ export default {
 
 .table-operations > button {
   margin-right: 8px;
+}
+.create-button {
+    float: right;
 }
 </style>

@@ -55,12 +55,10 @@ export default {
 };
 </script>
 
-<style>
-#components-layout-demo-top-side-2 .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 28px 16px 0;
-  float: left;
-}
+<style lang="less">
+    #main-layout {
+        .section-title {
+            display: inline;
+        }
+    }
 </style>
