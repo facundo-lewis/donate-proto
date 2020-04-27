@@ -13,7 +13,12 @@
       <a-button @click="clearFilters">Clear filters</a-button>
       <a-button @click="clearAll">Clear filters and sorters</a-button>
     </div>
-    <a-table :columns="columns" :dataSource="data" @change="handleChange">
+    <a-table 
+        :columns="columns" 
+        :dataSource="data" 
+        @change="handleChange"
+        :loading="loading"
+    >
         <div
             slot="filterDropdown"
             slot-scope="{ setSelectedKeys, selectedKeys, confirm, clearFilters, column }"
@@ -97,7 +102,8 @@ export default {
     name: 'DonationRequests',
     data() {
         return {
-            data,
+            data: [],
+            loading: true,
             filteredInfo: null,
             sortedInfo: null,
             searchText: '',
@@ -194,6 +200,13 @@ export default {
             this.searchText = '';
         },
     },
+    mounted() {
+        this.loading = true;
+        setTimeout(() => {
+            this.data = data;
+            this.loading = false;
+        }, 2000);
+    }
 };
 </script>
 <style scoped>
