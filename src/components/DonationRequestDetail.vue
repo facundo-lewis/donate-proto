@@ -2,9 +2,16 @@
     <div id="request-detail">
         <span class="ant-card-meta-title">{{ item.title }}</span>
         <div class="ant-card-meta-description">{{ item.organization }}</div>
+        <a-divider></a-divider>
+        <div class="ant-card-meta-description">{{ item.description }}</div>
         <div>
             <span class="resources-title">Resources needed:</span>
-            <a-list class="demo-loadmore-list" :loading="loading" itemLayout="horizontal" :dataSource="items">
+            <a-list class="demo-loadmore-list" 
+                :loading="loading" 
+                itemLayout="horizontal"
+                :dataSource="items"
+                :pagination="pagination"
+            >
                 <a-list-item slot="renderItem" slot-scope="requestItem">
                     <a-list-item-meta
                         :description="requestItem.observation"
@@ -28,7 +35,10 @@ export default {
     data() {
         return {
             items: [],
-            loading: false
+            loading: false,
+            pagination: {
+                pageSize: 4
+            }
         };
     },
     methods: {

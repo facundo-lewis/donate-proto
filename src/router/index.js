@@ -12,7 +12,9 @@ import OrganizationCreate from '../views/OrganizationCreate.vue';
 import OrganizationEdit from '../views/OrganizationEdit.vue';
 import Users from '../views/Users.vue'
 import User from '../views/User.vue'
+
 import Home from '../views/Home.vue'
+import Donation from '../views/Donation.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 
@@ -80,14 +82,14 @@ Vue.use(VueRouter)
       component: DonatorView,
       children: [
         {
-          path: 'donations',
-          name: 'Donations',
+          path: 'MyDonations',
+          name: 'MyDonations',
           component: Home
         },
         {
-          path: 'donations/requests',
-          name: 'DonationRequests',
-          component: Home
+          path: 'donate/:id',
+          name: 'Donation',
+          component: Donation
         },
         {
           path: '',

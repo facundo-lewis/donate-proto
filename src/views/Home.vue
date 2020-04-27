@@ -92,7 +92,7 @@ export default {
       if (this.item.id % 2 === 0) {
         this.$router.push("/sign-in")
       } else {
-        this.$router.push("/donation/" + this.item.id)
+        this.$router.push("/donate/" + this.item.id)
       }
     }
   }
