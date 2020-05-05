@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="table-operations">
         <h2 class="section-title">Organizations</h2>
         <div class="create-button">
@@ -64,6 +63,8 @@
         </template>
         <span slot="action" slot-scope="text, record">
             <router-link :to="'/admin/organization/' + record.key">Edit</router-link>
+            <a-divider type="vertical" />
+            <a>Details</a>
             <a-divider type="vertical" />
             <a>Delete</a>
         </span>

@@ -63,7 +63,7 @@
             <template v-else>{{ text }}</template>
         </template>
         <span slot="action" slot-scope="text, record">
-            <router-link :to="'/admin/user/' + record.key">View</router-link>
+            <router-link :to="'/admin/user/' + record.key">Details</router-link>
             <a-divider type="vertical" />
             <a>Delete</a>
         </span>

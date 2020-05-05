@@ -17,7 +17,9 @@ import {
   Menu,
   Modal,
   Table,
-  Divider
+  Divider,
+  Popover,
+  Popconfirm
 } from 'ant-design-vue'; 
 
 Vue.component(Button.name, Button);
@@ -48,6 +50,8 @@ Vue.component(Menu.SubMenu.name, Menu.SubMenu);
 Vue.component(Modal.name, Modal);
 Vue.component(Table.name, Table);
 Vue.component(Divider.name, Divider);
+Vue.component(Popover.name, Popover);
+Vue.component(Popconfirm.name, Popconfirm);
 
 Vue.config.productionTip = false
 

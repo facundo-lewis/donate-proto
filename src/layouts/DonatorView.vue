@@ -1,6 +1,7 @@
 <template>
     <a-layout id="main-layout">
         <a-layout-header
+            class="header"
             :style="{ position: 'fixed', zIndex: 1, width: '100%' }"
         >
            <div class="logo">
@@ -16,7 +17,8 @@
             </a-menu>
         </a-layout-header>
         <a-layout-content class="list">
-            <router-view></router-view>
+                <router-view></router-view>
+            
         </a-layout-content>
     </a-layout>
 </template>
@@ -26,18 +28,26 @@ export default {
     name: 'Dash',
 }
 </script>
-
-<style>
-    #main-layout .list {
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-    #main-layout .logo {
-        width: 120px;
-        height: 31px;
-        margin: 0px 24px 16px 0;
-        float: left;
-        color: white;
-        font-size: 30px;
+<style lang="less">
+    #main-layout {
+        .list {
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 0 50px;
+            margin-top: 64px;
+            background: #fff;
+        }
+        
+        .header {
+            padding: 0 20px;
+            .logo {
+                width: auto;
+                height: 31px;
+                margin: 0px 24px 16px 0;
+                float: left;
+                color: white;
+                font-size: 30px;
+            }
+        }
     }
 </style>

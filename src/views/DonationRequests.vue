@@ -65,6 +65,8 @@
         <span slot="action" slot-scope="text, record">
             <router-link :to="'/admin/donation/' + record.key">View</router-link>
             <a-divider type="vertical" />
+            <a>Details</a>
+            <a-divider type="vertical" />
             <a>Delete</a>
         </span>
     </a-table>
