@@ -19,7 +19,9 @@ import {
   Table,
   Divider,
   Popover,
-  Popconfirm
+  Popconfirm,
+  Skeleton,
+  Steps
 } from 'ant-design-vue'; 
 
 Vue.component(Button.name, Button);
@@ -37,7 +39,7 @@ Vue.component(Avatar.name, Avatar);
 Vue.component(Rate.name, Rate);
 Vue.component(Tag.name, Tag);
 Vue.component(Form.name, Form);
-Vue.component(Form.Item.name, Form.Item)
+Vue.component(Form.Item.name, Form.Item);
 Vue.component(Input.name, Input);
 Vue.component(Input.Password.name, Input.Password);
 Vue.component(Input.Search.name, Input.Search);
@@ -52,6 +54,9 @@ Vue.component(Table.name, Table);
 Vue.component(Divider.name, Divider);
 Vue.component(Popover.name, Popover);
 Vue.component(Popconfirm.name, Popconfirm);
+Vue.component(Skeleton.name, Skeleton);
+Vue.component(Steps.name, Steps);
+Vue.component(Steps.Step.name, Steps.Step);
 
 Vue.config.productionTip = false
 
